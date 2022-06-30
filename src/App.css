@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.HeaderText {
+  font-size: calc(10px + 2vmin);
+  color: red;
+}
+
+.Italic {
+  font-style: italic;
+}
