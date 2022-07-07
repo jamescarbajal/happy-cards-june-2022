@@ -1,5 +1,5 @@
 import HighlightCard from "./HighlightCard";
-import MovieCard from "./MovieCard";
+import MovieCard from "../MovieCard";
 
 const movieData = [
     {
