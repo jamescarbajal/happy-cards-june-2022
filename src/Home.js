@@ -1,5 +1,7 @@
-import HighlightCard from "./HighlightCard";
-import MovieCard from "../MovieCard";
+import MovieCard from "./components/MovieCard";
+import MovieList from "./components/MovieList";
+import { useState } from "react";
+
 
 const movieData = [
     {
@@ -42,18 +44,19 @@ const movieData = [
 
 
 export default function Home() {
+  const [isFun, setIsFun] = useState(false);
+
     return (
         <div>
+          <button onClick={() => setIsFun(!isFun)}>Make it {isFun ? "not fun" : "fun"}!</button>
+          <MovieList isFun={isFun} />
             <h1 className="HeaderText" >Newest Releases and Timeless Classics!!</h1>
             <h2 style={{ fontStyle: "italic", marginTop: 40}}>Choose from an ENDLESS selection of movies...</h2>
             <div style={{ display: "flex", justifyContent:"space-evenly", marginTop: 50}}>
-                {/* <HighlightCard header="Select a Holiday" />
-                <HighlightCard header="Pick a Design" />
-                <HighlightCard header="Let us Deliver It!" /> */}
 
-                <MovieCard posterImage={movieData[0].Poster} title={movieData[0].Title} rating={movieData[0].Rated}/>
-                <MovieCard posterImage={movieData[1].Poster} title={movieData[1].Title} rating={movieData[1].Rated}/>
-                <MovieCard posterImage={movieData[2].Poster} title={movieData[2].Title} rating={movieData[2].Rated} />
+                <MovieCard isFun={isFun} posterImage={movieData[0].Poster} title={movieData[0].Title} rating={movieData[0].Rated}/>
+                <MovieCard isFun={isFun} posterImage={movieData[1].Poster} title={movieData[1].Title} rating={movieData[1].Rated}/>
+                <MovieCard isFun={isFun} posterImage={movieData[2].Poster} title={movieData[2].Title} rating={movieData[2].Rated} />
             </div>
         </div>
     );
