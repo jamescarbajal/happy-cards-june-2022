@@ -1,10 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
 export default function MovieList(props) {
     const [timespan, setTimespan] = useState();
-    const [searchterm, searchTerm] = useState(["Halloween", "The Exorcist", "The Shining", "A Nightmare on Elm Street"]);
+    const [searchmovie, setSearchMovie] = useState([]);
     const [loggedIn, setLoggedIn] = useState(true);
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        async function getMoviesByName() {
+            setIsLoading(true);
+            const url = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=The+Avengers`;
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log("data is: ", data.Search);
+            setSearchMovie(data.Search);
+            setIsLoading(false);
+        }
+        getMoviesByName();
+    }, [])
 
     return (
         <div>
@@ -15,10 +30,10 @@ export default function MovieList(props) {
             <div>{timespan} is selected.</div>
             {!isLoading ? (
             <div>
-            {searchterm.length > 0 ? (
-                searchterm.map((Movie) => (
+            {searchmovie.length > 0 ? (
+                searchmovie.map((Movie) => (
                     <div style={{ backgroundColor: "yellow" }}>
-                        <div>{Movie}</div>
+                        <div>{Movie.Title}</div>
                     </div>
                 ))
                 ) : (
