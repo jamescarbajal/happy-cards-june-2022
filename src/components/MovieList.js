@@ -4,7 +4,7 @@ export default function MovieList(props) {
     const [timespan, setTimespan] = useState();
     const [searchterm, searchTerm] = useState(["Halloween", "The Exorcist", "The Shining", "A Nightmare on Elm Street"]);
     const [loggedIn, setLoggedIn] = useState(true);
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setLoading] = useState(false);
 
     return (
         <div>
@@ -13,8 +13,8 @@ export default function MovieList(props) {
             <button onClick={() => setTimespan("This Month")}>This Month</button>
             <button onClick={() => setTimespan("This Year")}>This Year</button>
             <div>{timespan} is selected.</div>
-            {loading && <div style={{ color: "blue" }} >Searching for your movies...</div>}
-            
+            {!isLoading ? (
+            <div>
             {searchterm.length > 0 ? (
                 searchterm.map((Movie) => (
                     <div style={{ backgroundColor: "yellow" }}>
@@ -26,7 +26,10 @@ export default function MovieList(props) {
                     <div>No movies found.</div>
                 </div>
             )}
-
+            </div>
+            ) : (
+                <div style={{ color: "blue" }} >Searching for your movies...</div>
+            )}
         </div>
     );
 }
