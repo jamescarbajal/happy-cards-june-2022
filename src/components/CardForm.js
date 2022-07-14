@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import styled from "styled-components";
+import MovieCard from "./MovieCard";
 
 export default function CardForm() {
     // const [recipientName, setRecipientName] = useState("");
@@ -34,10 +36,26 @@ export default function CardForm() {
         getMoviesByName();
     };
 
+const CardContainer = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid gray;
+    background-color: lightgray;
+`;
+
+const MiniHeader = styled.div`
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+`;
+
     return (
         <div><br></br>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="recipientName">Search by Movie Name </label>
+                <MiniHeader htmlFor="recipientName">Search by Movie Name </MiniHeader>
                 <input 
                     name="recipientName"
                     type="text"
@@ -48,19 +66,19 @@ export default function CardForm() {
             
             </form>
             <br></br>
-            <span>Results:</span>
+            <MiniHeader>Results:</MiniHeader>
         <div>   
             {!isLoading ? (
-                <div><br></br>
+                <CardContainer>
                 {movieList.length > 0 ? (
                     movieList.map((Movie) => (
-                        <div>{Movie.Title} <span style={{ color: "lightblue" }}>{Movie.Year}</span></div>
+                        <MovieCard Poster={Movie.Poster} Title={Movie.Title} Year={Movie.Year} Rating={Movie.Rated} />
                     ))
                 ) : (
                 <div>No results found.</div>
                 )
                 }
-                </div>
+                </CardContainer>
             ) : (
             <div style={{ color: "blue" }} >Searching for your movies...</div>
             )}
