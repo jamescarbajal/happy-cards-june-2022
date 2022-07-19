@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import MovieCard from "./MovieCard";
+import ReactModal from "react-modal";
 
 export default function CardForm() {
     // const [recipientName, setRecipientName] = useState("");
@@ -55,6 +56,7 @@ const MiniHeader = styled.div`
     return (
         <div><br></br>
             <form onSubmit={handleSubmit}>
+
                 <MiniHeader htmlFor="recipientName">Search by Movie Name </MiniHeader>
                 <input 
                     name="recipientName"
@@ -67,22 +69,23 @@ const MiniHeader = styled.div`
             </form>
             <br></br>
             <MiniHeader>Results:</MiniHeader>
-        <div>   
-            {!isLoading ? (
-                <CardContainer>
-                {movieList.length > 0 ? (
-                    movieList.map((Movie) => (
-                        <MovieCard Poster={Movie.Poster} Title={Movie.Title} Year={Movie.Year} Rating={Movie.Rated} />
-                    ))
+            <div>   
+                {!isLoading ? (
+                    <CardContainer>
+
+                    {movieList.length > 0 ? (
+                        movieList.map((Movie) => (
+                            <MovieCard Poster={Movie.Poster} Title={Movie.Title} Year={Movie.Year} Rating={Movie.Rated} />
+                        ))
+                    ) : (
+                    <div>No results found.</div>
+                    )
+                    }
+                    </CardContainer>
                 ) : (
-                <div>No results found.</div>
-                )
-                }
-                </CardContainer>
-            ) : (
-            <div style={{ color: "blue" }} >Searching for your movies...</div>
-            )}
-        </div>
+                <div style={{ color: "blue" }} >Searching for your movies...</div>
+                )}
+            </div>
         </div>
     );
 }

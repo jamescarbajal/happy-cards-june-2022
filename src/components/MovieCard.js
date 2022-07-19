@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import ReactModal from "react-modal";
 
 const PosterImage = styled.img`
     height: auto;
@@ -25,13 +27,16 @@ font-weight: 600;
 margin-top: 10px;
 `;
 
+
+
 export default function MovieCard(props) {
     console.log(props);
+
     return (
-        <CardWrapper>
-            <PosterImage src={props.Poster}></PosterImage>
-            <CardHeader>{props.Title}</CardHeader>
-            <CardHeader>Year: {props.Year}</CardHeader>
-        </CardWrapper>
+            <CardWrapper onClick={() => console.log(`Movie card ${props.Title} clicked`)}>
+                <PosterImage src={props.Poster}></PosterImage>
+                <CardHeader>{props.Title}</CardHeader>
+                <CardHeader>Year: {props.Year}</CardHeader>
+            </CardWrapper>
     )
 }
