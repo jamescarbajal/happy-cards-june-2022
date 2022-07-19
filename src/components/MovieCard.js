@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import ReactModal from "react-modal";
+import ModalCard from "./ModalCard";
 
 const PosterImage = styled.img`
     height: auto;
@@ -27,16 +28,22 @@ font-weight: 600;
 margin-top: 10px;
 `;
 
-
-
 export default function MovieCard(props) {
+    
     console.log(props);
 
+    const { Poster, Title, Year } = props;
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
-            <CardWrapper onClick={() => console.log(`Movie card ${props.Title} clicked`)}>
-                <PosterImage src={props.Poster}></PosterImage>
-                <CardHeader>{props.Title}</CardHeader>
-                <CardHeader>Year: {props.Year}</CardHeader>
+        <>
+            <CardWrapper onClick={() => setIsModalOpen(true)}>
+                <PosterImage src={Poster}></PosterImage>
+                <CardHeader>{Title}</CardHeader>
+                <CardHeader>Year: {Year}</CardHeader>
             </CardWrapper>
+            <ModalCard Poster={Poster} Title={Title} Year={Year} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+        </>
     )
 }
