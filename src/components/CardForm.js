@@ -34,6 +34,7 @@ export default function CardForm() {
             setMovielist(data.Search);
             setIsLoading(false);
         }
+        
         getMoviesByName();
     };
 
@@ -57,9 +58,9 @@ const MiniHeader = styled.div`
         <div><br></br>
             <form onSubmit={handleSubmit}>
 
-                <MiniHeader htmlFor="recipientName">Search by Movie Name </MiniHeader>
+                <MiniHeader>Search by Movie Name </MiniHeader>
                 <input 
-                    name="recipientName"
+                    name="movieName"
                     type="text"
                     value={movieName}
                     onChange={(event) => setMovieName(event.target.value)}
@@ -75,7 +76,7 @@ const MiniHeader = styled.div`
 
                     {movieList.length > 0 ? (
                         movieList.map((Movie) => (
-                            <MovieCard Poster={Movie.Poster} Title={Movie.Title} Year={Movie.Year} Rating={Movie.Rated} />
+                            <MovieCard Poster={Movie.Poster} Title={Movie.Title} Year={Movie.Year} Plot={Movie.Plot}/>
                         ))
                     ) : (
                     <div>No results found.</div>

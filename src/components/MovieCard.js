@@ -32,9 +32,16 @@ export default function MovieCard(props) {
     
     console.log(props);
 
-    const { Poster, Title, Year } = props;
+    const { Poster, Title, Year, Plot } = props;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    function cardWrapperClick(e) {
+        e.preventdefault();
+        async function getMoviePlot() {
+            
+        }
+    }
 
     return (
         <>
@@ -43,7 +50,7 @@ export default function MovieCard(props) {
                 <CardHeader>{Title}</CardHeader>
                 <CardHeader>Year: {Year}</CardHeader>
             </CardWrapper>
-            <ModalCard Poster={Poster} Title={Title} Year={Year} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+            <ModalCard Poster={Poster} Title={Title} Year={Year} isModalOpen={isModalOpen} Plot={Plot} setIsModalOpen={setIsModalOpen}/>
         </>
     )
 }
