@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import MovieCard from "./MovieCard";
 import ReactModal from "react-modal";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 export default function CardForm() {
     // const [recipientName, setRecipientName] = useState("");
@@ -13,6 +14,8 @@ export default function CardForm() {
     const [movieName, setMovieName] = useState("");
     const [movieList, setMovielist] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+
+    const { toggleTheme } = useContext(ThemeContext);
 
     function handleSubmit() {
         console.log("Submitted!");
@@ -55,6 +58,7 @@ const MiniHeader = styled.div`
 
     return (
         <div><br></br>
+        <button onClick={toggleTheme} >Toggle theme</button>
             <form onSubmit={handleSubmit}>
 
                 <MiniHeader>Search by Movie Name </MiniHeader>

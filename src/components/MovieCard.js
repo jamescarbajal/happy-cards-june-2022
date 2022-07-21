@@ -2,6 +2,8 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import ReactModal from "react-modal";
 import ModalCard from "./ModalCard";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext"
 
 const PosterImage = styled.img`
     height: auto;
@@ -42,6 +44,7 @@ export default function MovieCard(props) {
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const { theme } = useContext(ThemeContext);
 
 
     return (
@@ -50,8 +53,9 @@ export default function MovieCard(props) {
                 <PosterImage src={Poster}></PosterImage>
                 <CardHeader>{Title}</CardHeader>
                 <CardHeader>Year: {Year}</CardHeader>
+                <div>The theme is {theme}!!</div>
             </CardWrapper>
-            <ModalCard Poster={Poster} Title={Title} Year={Year} imdbID={imdbID} isModalOpen={isModalOpen} selectMovieById={selectMovieByID()} setIsModalOpen={setIsModalOpen}/>
+            <ModalCard Poster={Poster} Title={Title} Year={Year} imdbID={imdbID} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
         </>
     )
 }
