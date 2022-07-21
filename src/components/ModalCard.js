@@ -1,5 +1,5 @@
 import ReactModal from "react-modal";
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { ThemeContext } from "../contexts/ThemeContext";
 
@@ -19,19 +19,43 @@ const ModalWrapper = styled.div`
 `;
 
 
-const { Poster, Title, Year, Plot, isModalOpen, setIsModalOpen } = props;
+const { Title, Year, Plot, isModalOpen, setIsModalOpen, imdbID} = props;
 
 const { theme } = useContext(ThemeContext);
+
+const [movieDetails, setMovieDetails] = useState(null);
+
+const OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY;
+
+const [isLoading, setIsLoading] = useState(false);
+
+useEffect(() => {
+    async function getMovieDetails() {
+        setIsLoading(true);
+        const url = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${imdbID}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log("Movie details: ", data.Actors);
+        setIsLoading(false);
+        setMovieDetails(data);
+    }
+    getMovieDetails();
+}, [])
+
+const handleClose = () => {
+    setIsModalOpen(false);
+    setMovieDetails(null);
+}
 
 return (
         <ReactModal isOpen={isModalOpen}>
             <ModalWrapper className={`App-${theme}`}>
-                <div>{Title}</div>
+                <div>{movieDetails.Actors}</div>
                 <div>{Year}</div>
                 <div>
                     {Plot}
                 </div>
-                <button type="button" onClick={() => setIsModalOpen(false)}>Close</button>
+                <button type="button" onClick={handleClose}>Close</button>
             </ModalWrapper>
         </ReactModal>
     );

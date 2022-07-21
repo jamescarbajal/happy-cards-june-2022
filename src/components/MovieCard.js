@@ -33,28 +33,23 @@ export default function MovieCard(props) {
     
     console.log(props);
 
-    const OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY;
-
     const { Poster, Title, Year, imdbID } = props;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const [moviePlot, setMoviePlot] = useState("")
 
     const [isLoading, setIsLoading] = useState(false);
 
     const { theme } = useContext(ThemeContext);
 
 
-
     return (
         <>
-            <CardWrapper className={`App-${theme}`} onClick={() => setIsModalOpen(true).then.cardWrapperClick()}>
+            <CardWrapper className={`App-${theme}`} onClick={() => setIsModalOpen(true)}>
                 <PosterImage src={Poster}></PosterImage>
                 <CardHeader>{Title}</CardHeader>
                 <CardHeader>Year: {Year}</CardHeader>
             </CardWrapper>
-            <ModalCard Poster={Poster} Title={Title} Year={Year} imdbID={imdbID} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+            <ModalCard imdbID={imdbID} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
         </>
     )
 }
