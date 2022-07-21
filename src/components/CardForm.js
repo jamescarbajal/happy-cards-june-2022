@@ -34,7 +34,6 @@ export default function CardForm() {
             setMovielist(data.Search);
             setIsLoading(false);
         }
-        
         getMoviesByName();
     };
 
@@ -76,7 +75,7 @@ const MiniHeader = styled.div`
 
                     {movieList.length > 0 ? (
                         movieList.map((Movie) => (
-                            <MovieCard Poster={Movie.Poster} Title={Movie.Title} Year={Movie.Year} Plot={Movie.Plot}/>
+                            <MovieCard Poster={Movie.Poster} Title={Movie.Title} Year={Movie.Year} imdbID={Movie.imdbID}/>
                         ))
                     ) : (
                     <div>No results found.</div>
