@@ -40,6 +40,7 @@ export default function CardForm() {
         getMoviesByName();
     };
 
+
 const CardContainer = styled.div`
     display: flex;
     flex-flow: row wrap;
@@ -54,7 +55,11 @@ const MiniHeader = styled.div`
     font-size: 1.2rem;
     margin-top: 10px;
     margin-bottom: 10px;
+    width: 100%;
+    height: auto;
 `;
+
+const { theme } = useContext(ThemeContext);
 
     return (
         <div><br></br>
@@ -73,21 +78,21 @@ const MiniHeader = styled.div`
             </form>
             <br></br>
             <MiniHeader>Results:</MiniHeader>
-            <div>   
+            <div className={`App-${theme}`}>   
                 {!isLoading ? (
-                    <CardContainer>
+                    <CardContainer className={`App-${theme}`}>
 
                     {movieList.length > 0 ? (
                         movieList.map((Movie) => (
                             <MovieCard Poster={Movie.Poster} Title={Movie.Title} Year={Movie.Year} imdbID={Movie.imdbID}/>
                         ))
                     ) : (
-                    <div>No results found.</div>
+                    <MiniHeader className={`App-${theme}`}>No results found.</MiniHeader>
                     )
                     }
                     </CardContainer>
                 ) : (
-                <div style={{ color: "blue" }} >Searching for your movies...</div>
+                <MiniHeader className={`App-${theme}`} style={{ color: "blue" }} >Searching for your movies...</MiniHeader>
                 )}
             </div>
         </div>

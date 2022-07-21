@@ -9,9 +9,8 @@ function App() {
   return (
     <ThemeProvider>
 
-    <div className="App">
-      {/* <Home /> */}
-      <CardForm />
+    <div>
+      <Home />
     </div>
 
     </ThemeProvider>

@@ -22,7 +22,6 @@ width: 300px;
 height: auto;
 min-height: 500px;
 margin: 10px;
-background-color: #ffffff;
 `;
 
 const CardHeader = styled.div`
@@ -47,13 +46,13 @@ export default function MovieCard(props) {
     const { theme } = useContext(ThemeContext);
 
 
+
     return (
         <>
-            <CardWrapper onClick={() => setIsModalOpen(true).then.cardWrapperClick()}>
+            <CardWrapper className={`App-${theme}`} onClick={() => setIsModalOpen(true).then.cardWrapperClick()}>
                 <PosterImage src={Poster}></PosterImage>
                 <CardHeader>{Title}</CardHeader>
                 <CardHeader>Year: {Year}</CardHeader>
-                <div>The theme is {theme}!!</div>
             </CardWrapper>
             <ModalCard Poster={Poster} Title={Title} Year={Year} imdbID={imdbID} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
         </>
