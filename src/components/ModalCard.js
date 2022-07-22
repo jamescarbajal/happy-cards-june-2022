@@ -14,9 +14,19 @@ const ModalWrapper = styled.div`
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    max-height: fit-content;
-    max-width: fit-content;
+    height: 100%;
+    width: 100%;
     text-align: justify;
+`;
+
+const PlotContainer = styled.p`
+    max-width: 400px;
+`;
+
+const CloseButton = styled.button`
+    position: absolute;
+    top: 5%;
+    right: 5%;
 `;
 
 const { Title, Poster, Year, isModalOpen, setIsModalOpen, movieDetails, setMovieDetails, isLoading, setIsLoading} = props;
@@ -40,8 +50,8 @@ return (
                     <div><img src={Poster}></img></div>
                     <div>{Title}</div>
                     <div>{Year}</div>
-                    <div>{Plot}</div>
-                    <button type="button" onClick={handleClose}>Close</button>
+                    <PlotContainer>{Plot}</PlotContainer>
+                    <CloseButton type="button" onClick={handleClose}>Close</CloseButton>
                 </>
                 ) : (
                     <div>Loading content...</div>

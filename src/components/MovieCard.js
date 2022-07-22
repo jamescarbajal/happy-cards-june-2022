@@ -66,11 +66,10 @@ export default function MovieCard(props) {
             <CardWrapper className={`App-${theme}`} onClick={cardWrapperClicked}>
                 <PosterImage src={Poster}></PosterImage>
                 <CardHeader>{Title}</CardHeader>
-                <CardHeader>Year: {Year}</CardHeader>
-                <div>The theme is {theme}!!</div>
+                <CardHeader>{Year}</CardHeader>
             </CardWrapper>
 
-            <ModalCard Poster={Poster} Title={Title} Year={Year} movieDetails={movieDetails} setMovieDetails={setMovieDetails} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} isLoading={isLoading} setIsLoading={setIsLoading}/>
+            <ModalCard Poster={Poster} Title={Title} Year={Year} movieDetails={movieDetails} setMovieDetails={setMovieDetails} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} isLoading={isLoading} setIsLoading={setIsLoading} />
         </>
     )
 }

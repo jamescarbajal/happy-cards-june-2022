@@ -33,6 +33,9 @@ export default function CardForm() {
         getMoviesByName();
     };
 
+const MainContainer = styled.div`
+    min-height: 100vh;
+`;
 
 const CardContainer = styled.div`
     display: flex;
@@ -40,7 +43,6 @@ const CardContainer = styled.div`
     justify-content: space-evenly;
     align-items: center;
     border: 1px solid gray;
-    background-color: lightgray;
 `;
 
 const MiniHeader = styled.div`
@@ -53,23 +55,26 @@ const MiniHeader = styled.div`
 const { theme } = useContext(ThemeContext);
 
     return (
-        <div className={`App-${theme}`}><br></br>
-            <button onClick={toggleTheme} >Toggle theme</button>
-            <form onSubmit={handleSubmit}>
+    <>
+        <div className={`App-${theme}`}>
+            <br></br>
+            <div>
+                <button onClick={toggleTheme} >Toggle theme</button>
+                <form onSubmit={handleSubmit}>
 
-                <MiniHeader>Search by Movie Name </MiniHeader>
-                <input 
-                    name="searchBox"
-                    type="text"
-                    value={movieName}
-                    onChange={(event) => setMovieName(event.target.value)}
-                />
-                <button type="submit">Search</button>
-            
-            </form>
+                    <MiniHeader>Search by Movie Name </MiniHeader>
+                    <input 
+                        name="searchBox"
+                        type="text"
+                        value={movieName}
+                        onChange={(event) => setMovieName(event.target.value)}
+                    />
+                    <button type="submit">Search</button>
+                </form>
+            </div>
             <br></br>
             <MiniHeader>Results:</MiniHeader>
-            <div>   
+            <div>
                 {!isLoading ? (
                     <CardContainer className={`App-${theme}`}>
 
@@ -78,7 +83,7 @@ const { theme } = useContext(ThemeContext);
                             <MovieCard Poster={Movie.Poster} Title={Movie.Title} Year={Movie.Year} imdbID={Movie.imdbID}/>
                         ))
                     ) : (
-                    <div className={`App-${theme}`}>No results found.</div>
+                    <MiniHeader className={`App-${theme}`}>No results found.</MiniHeader>
                     )
                     }
                     </CardContainer>
@@ -87,5 +92,6 @@ const { theme } = useContext(ThemeContext);
                 )}
             </div>
         </div>
+    </>
     );
 }
