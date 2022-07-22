@@ -17,16 +17,9 @@ export default function CardForm() {
 
     const { toggleTheme } = useContext(ThemeContext);
 
-    function handleSubmit() {
-        console.log("Submitted!");
-    }
-    function makeUppercase(value) {
-        return value.toUpperCase();
-    }
-
     const OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
         async function getMoviesByName() {
             setIsLoading(true);
@@ -55,20 +48,18 @@ const MiniHeader = styled.div`
     font-size: 1.2rem;
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 100%;
-    height: auto;
 `;
 
 const { theme } = useContext(ThemeContext);
 
     return (
-        <div><br></br>
-        <button onClick={toggleTheme} >Toggle theme</button>
+        <div className={`App-${theme}`}><br></br>
+            <button onClick={toggleTheme} >Toggle theme</button>
             <form onSubmit={handleSubmit}>
 
                 <MiniHeader>Search by Movie Name </MiniHeader>
                 <input 
-                    name="movieName"
+                    name="searchBox"
                     type="text"
                     value={movieName}
                     onChange={(event) => setMovieName(event.target.value)}
@@ -78,7 +69,7 @@ const { theme } = useContext(ThemeContext);
             </form>
             <br></br>
             <MiniHeader>Results:</MiniHeader>
-            <div className={`App-${theme}`}>   
+            <div>   
                 {!isLoading ? (
                     <CardContainer className={`App-${theme}`}>
 
@@ -87,7 +78,7 @@ const { theme } = useContext(ThemeContext);
                             <MovieCard Poster={Movie.Poster} Title={Movie.Title} Year={Movie.Year} imdbID={Movie.imdbID}/>
                         ))
                     ) : (
-                    <MiniHeader className={`App-${theme}`}>No results found.</MiniHeader>
+                    <div className={`App-${theme}`}>No results found.</div>
                     )
                     }
                     </CardContainer>

@@ -12,50 +12,42 @@ const ModalWrapper = styled.div`
     transform: translate(-50%, -50%);
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    max-height: fit-content;
+    max-width: fit-content;
+    text-align: justify;
 `;
 
-
-const { Title, Year, Plot, isModalOpen, setIsModalOpen, imdbID} = props;
+const { Title, Poster, Year, isModalOpen, setIsModalOpen, movieDetails, setMovieDetails, isLoading, setIsLoading} = props;
 
 const { theme } = useContext(ThemeContext);
 
-const [movieDetails, setMovieDetails] = useState(null);
-
 const OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
-const [isLoading, setIsLoading] = useState(false);
-
-useEffect(() => {
-    async function getMovieDetails() {
-        setIsLoading(true);
-        const url = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${imdbID}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log("Movie details: ", data.Actors);
-        setIsLoading(false);
-        setMovieDetails(data);
-    }
-    getMovieDetails();
-}, [])
+const { Plot, Actors, Rated } = movieDetails;
 
 const handleClose = () => {
     setIsModalOpen(false);
-    setMovieDetails(null);
+    setMovieDetails({});
 }
 
 return (
         <ReactModal isOpen={isModalOpen}>
             <ModalWrapper className={`App-${theme}`}>
-                <div>{movieDetails.Actors}</div>
-                <div>{Year}</div>
-                <div>
-                    {Plot}
-                </div>
-                <button type="button" onClick={handleClose}>Close</button>
+                {!isLoading ? (
+                <>
+                    <div><img src={Poster}></img></div>
+                    <div>{Title}</div>
+                    <div>{Year}</div>
+                    <div>{Plot}</div>
+                    <button type="button" onClick={handleClose}>Close</button>
+                </>
+                ) : (
+                    <div>Loading content...</div>
+                )
+
+                }
             </ModalWrapper>
         </ReactModal>
     );

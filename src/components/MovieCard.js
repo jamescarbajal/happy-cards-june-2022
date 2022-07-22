@@ -31,25 +31,46 @@ margin-top: 10px;
 
 export default function MovieCard(props) {
     
-    console.log(props);
+    console.log("MovieCard props:", props);
+
+    const OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
     const { Poster, Title, Year, imdbID } = props;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [isLoading, setIsLoading] = useState(false);
-
     const { theme } = useContext(ThemeContext);
 
+    const [movieDetails, setMovieDetails] = useState({});
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const cardWrapperClicked = (e) => {
+        e.preventDefault();
+        setIsModalOpen(true);
+        async function getMovieDetails() {
+            setIsLoading(true);
+            console.log("imdbID: ", imdbID);
+            const url = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${imdbID}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log("Movie Details: ", data);
+            setMovieDetails(data);
+            setIsLoading(false);
+        }
+    getMovieDetails();
+    }
 
     return (
         <>
-            <CardWrapper className={`App-${theme}`} onClick={() => setIsModalOpen(true)}>
+            <CardWrapper className={`App-${theme}`} onClick={cardWrapperClicked}>
                 <PosterImage src={Poster}></PosterImage>
                 <CardHeader>{Title}</CardHeader>
                 <CardHeader>Year: {Year}</CardHeader>
+                <div>The theme is {theme}!!</div>
             </CardWrapper>
-            <ModalCard imdbID={imdbID} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+
+            <ModalCard Poster={Poster} Title={Title} Year={Year} movieDetails={movieDetails} setMovieDetails={setMovieDetails} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} isLoading={isLoading} setIsLoading={setIsLoading}/>
         </>
     )
 }
