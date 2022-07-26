@@ -59,7 +59,6 @@ const { theme } = useContext(ThemeContext);
         <div className={`App-${theme}`}>
             <br></br>
             <div>
-                <button onClick={toggleTheme} >Toggle theme</button>
                 <form onSubmit={handleSubmit}>
 
                     <MiniHeader>Search by Movie Name </MiniHeader>
