@@ -10,10 +10,12 @@ function App() {
   return (
     <ThemeProvider>
 
-    <div>
-      <Home />
-    </div>
-
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/Home" element={<Home />}/>
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
