@@ -1,15 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import MovieCard from "./MovieCard";
-import ReactModal from "react-modal";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 export default function CardForm() {
-    // const [recipientName, setRecipientName] = useState("");
-    // const [recipientEmail, setRecipientEmail] = useState("");
-    // const [selectedHolidayName, setSelectedHolidayName] = useState("");
-    // const [senderName, setSenderName] = useState("");
-    // const [senderEmail, setSenderEmail] = useState("");
 
     const [movieName, setMovieName] = useState("");
     const [movieList, setMovielist] = useState({});

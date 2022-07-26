@@ -1,7 +1,6 @@
-import MovieCard from "./MovieCard";
-import MovieList from "./MovieList";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import CardForm from "./CardForm";
+import { ClickableText } from "./StyledComponents";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { Link } from "react-router-dom";
 
@@ -15,7 +14,13 @@ export default function Home() {
 
           <CardForm />
           <div className="Home-CallToActionSection">
-            <div className="HeaderText">What are you waiting for? Try it NOW!</div>
+            <div className="HeaderText">What are you waiting for?
+
+            <Link to="/">
+              <ClickableText>Try it now!</ClickableText>
+            </Link>
+            
+            </div>
           </div>
 
         </div>
