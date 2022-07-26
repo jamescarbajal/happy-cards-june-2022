@@ -4,6 +4,7 @@ import Home from './Home';
 import MovieList from './components/MovieList';
 import CardForm from './components/CardForm';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { BrowserRouter, Route, Route } from 'react-router-dom'
 
 function App() {
   return (
