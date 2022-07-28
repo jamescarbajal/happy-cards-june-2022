@@ -14,6 +14,12 @@ export default function NavBarLinks(props) {
         <NavLink to="/" style={({ isActive}) => styleByActiveStatus(isActive)}>
             <HeaderLink path="/">Home</HeaderLink>
         </NavLink>
+        <NavLink to="/Login" style={({ isActive}) => styleByActiveStatus(isActive)}>
+            <HeaderLink path="/Login">Login</HeaderLink>
+        </NavLink>
+        <NavLink to="/CardForm" style={({ isActive}) => styleByActiveStatus(isActive)}>
+            <HeaderLink path="/CardForm">Card Form</HeaderLink>
+        </NavLink>
     </>
     );
 }

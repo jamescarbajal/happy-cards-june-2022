@@ -7,6 +7,7 @@ import NotFound from './components/NotFound';
 import Login from './components/Login';
 import { UserProvider } from './contexts/UserContext';
 import CardForm from './components/CardForm';
+import AuthChecker from './components/AuthChecker';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
             <Route path="/" element={<HeaderFooter />}>
               <Route index element={<Home />} />
               <Route path="/Login" element = {<Login />} />
-              <Route path="/CardForm" element = {<CardForm />} />
+                <Route path="/CardForm" element = {<CardForm />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
