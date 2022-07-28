@@ -34,9 +34,17 @@ export default function Login() {
 
             <form onSubmit={handleSubmit}>
                 <LabeledTextInput name="Email" value={email} setValue={setEmail} />
-                <LabeledTextInput name="Password" value={password} setValue={setPassword} />
-                <button primary type="submit">Login</button>
+                <LabeledTextInput 
+                    name="Password" 
+                    value={password} 
+                    setValue={setPassword} 
+                    inputType="password"
+                />
+                <button primary type="submit">
+                    Login
+                </button>
             </form>
+            {showLoginError && <div>User not found.</div>}
         </>
     )
 

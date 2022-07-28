@@ -8,7 +8,8 @@ export default function AuthChecker(props) {
 
     if (!loggedInUser) {
         return <Navigate to="/Login" />;
-    }
+    } else {
 
     return props.children;
+    }
 }

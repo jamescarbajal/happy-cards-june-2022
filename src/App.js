@@ -18,7 +18,14 @@ function App() {
             <Route path="/" element={<HeaderFooter />}>
               <Route index element={<Home />} />
               <Route path="/Login" element = {<Login />} />
-                <Route path="/CardForm" element = {<CardForm />} />
+              <Route 
+                path="/CardForm"
+                element={
+                  <AuthChecker>
+                    <CardForm />
+                  </AuthChecker>
+                }
+              />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
