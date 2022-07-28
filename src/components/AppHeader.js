@@ -1,5 +1,5 @@
 import ThemeToggle from "./ThemeToggle";
-import { NavLink } from "react-router-dom";
+import NavBarLinks from "./NavBarLinks";
 import { HeaderLink } from "./StyledComponents";
 
 function styleByActiveStatus(isActive) {
@@ -15,13 +15,7 @@ export default function AppHeader() {
         <div className="HeaderText" style={{ marginTop: 10 }}>
             James' Movie Search
         </div>
-            <NavLink to="/" style={({ isActive}) => styleByActiveStatus(isActive)}>
-                <HeaderLink>Home</HeaderLink>
-            </NavLink>
-            <NavLink to="/Login" style={({ isActive}) => styleByActiveStatus(isActive)}>
-                <HeaderLink>Login</HeaderLink>
-            </NavLink>
-            <ThemeToggle />
-    </div>
+            <NavBarLinks  />
+        </div>
     );
 }
