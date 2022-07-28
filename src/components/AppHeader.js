@@ -18,6 +18,9 @@ export default function AppHeader() {
             <NavLink to="/" style={({ isActive}) => styleByActiveStatus(isActive)}>
                 <HeaderLink>Home</HeaderLink>
             </NavLink>
+            <NavLink to="/Login" style={({ isActive}) => styleByActiveStatus(isActive)}>
+                <HeaderLink>Login</HeaderLink>
+            </NavLink>
             <ThemeToggle />
     </div>
     );
