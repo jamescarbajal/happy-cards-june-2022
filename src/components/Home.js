@@ -12,11 +12,11 @@ export default function Home() {
     return (
         <div className={`App-${theme}`}>
 
-          <CardForm />
+          {/* <CardForm /> */}
           <div className="Home-CallToActionSection">
             <div className="HeaderText">What are you waiting for?
 
-            <Link to="/">
+            <Link to="/CardForm">
               <ClickableText>Try it now!</ClickableText>
             </Link>
             
