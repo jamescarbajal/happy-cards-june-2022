@@ -44,7 +44,7 @@ export default function Login() {
                     Login
                 </button>
             </form>
-            {showLoginError && <div>User not found.</div>}
+            {showLoginError && <div>Invalid email or password.</div>}
         </>
     )
 

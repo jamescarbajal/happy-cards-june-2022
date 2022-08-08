@@ -14,3 +14,31 @@ export const ClickableText = styled.button`
     background: none;
     color: steelblue;
 `;
+
+export const MainContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+  `;
+
+  export const HeaderContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 100%;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+  `;
+
+  export const HomeContainer = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `;

@@ -20,7 +20,7 @@ export default function NavBarLinks(props) {
             <HeaderLink path="/">Home</HeaderLink>
         </NavLink>
         <NavLink to="/CardForm" style={({ isActive}) => styleByActiveStatus(isActive)}>
-            <HeaderLink path="/CardForm">Card Form</HeaderLink>
+            <HeaderLink path="/CardForm">Movie Search</HeaderLink>
         </NavLink>
 
         {!loggedInUser ? (

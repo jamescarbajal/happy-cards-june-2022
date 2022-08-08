@@ -1,6 +1,6 @@
 import ThemeToggle from "./ThemeToggle";
 import NavBarLinks from "./NavBarLinks";
-import { HeaderLink } from "./StyledComponents";
+import { HeaderContainer } from "./StyledComponents";
 
 function styleByActiveStatus(isActive) {
     return isActive 
@@ -12,13 +12,11 @@ export default function AppHeader() {
 
     return (
         <>
-        <div style={{ display: "flex", flexFlow: "row wrap" , justifyContent: "space-between", alignItems: "center" }}>
-        <div className="HeaderText" style={{ marginTop: 10 }}>
-            James' Movie Search
-        </div>
-            <NavBarLinks  />
-            <ThemeToggle />
-        </div>
+            <HeaderContainer>
+                <div>James' Movie Search</div>
+                <NavBarLinks  />
+                <ThemeToggle />
+            </HeaderContainer>
         </>
     );
 }
