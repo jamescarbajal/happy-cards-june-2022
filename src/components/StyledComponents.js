@@ -15,6 +15,19 @@ export const ClickableText = styled.button`
     color: steelblue;
 `;
 
+export const FooterContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-top: 30px;
+`;
+
 export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -30,7 +43,7 @@ export const MainContainer = styled.div`
     align-items: center;
     min-width: 100%;
     height: 100px;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.15);

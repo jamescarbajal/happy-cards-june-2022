@@ -53,7 +53,7 @@ const { theme } = useContext(ThemeContext);
         <div className={`App-${theme}`}>
             <br></br>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form style={{ marginTop: '50px' }} onSubmit={handleSubmit}>
 
                     <MiniHeader>Search by Movie Name </MiniHeader>
                     <input 

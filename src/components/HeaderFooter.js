@@ -3,7 +3,7 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import { Outlet } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import AppHeader from "./AppHeader";
-import { MainContainer } from "./StyledComponents";
+import { MainContainer, FooterContainer } from "./StyledComponents";
 
 
 export default function HeaderFooter() {
@@ -13,7 +13,9 @@ export default function HeaderFooter() {
     <MainContainer className={`App-${theme}`}>
         <AppHeader />
         <Outlet />
-        <div>&copy; 2022 James Carbajal</div>
+        <FooterContainer>
+            &copy; 2022 James Carbajal
+        </FooterContainer>
     </MainContainer>
     );
 }
